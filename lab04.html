@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau EDA | Colby Reynolds</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="lab02.html">Lab 2: AI Evaluation</a>
+            <a href="lab03.html">Lab 3: Visualization Critique</a>
+            <a href="lab04.html" class="active">Lab 4: Tableau Viz</a>
+            <!-- Add more lab links as the semester progresses -->
+        </nav>
+        <h1>Tableau Exploratory Data Analysis</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Visualization (Tableau Public)</h2>
+            <p>
+                This dashboard explores NFL passing data from <strong>2001–2023</strong>. It includes a line chart to show league-wide trends,
+                a scatterplot-style view to compare volume vs. production, and a heatmap to highlight breaks in patterns by team and year.
+            </p>
+
+            
+                 <div class='tableauPlaceholder' id='viz1770922813933' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLPassingTrendslab&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='NFLPassingTrendslab&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLPassingTrendslab&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1770922813933');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='977px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            <div>
+                <div class='tableauPlaceholder' id='viz1770926455037' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLPassingTrends&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='NFLPassingTrends&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;NF&#47;NFLPassingTrends&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1770926455037');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+
+            </div>
+
+            <p>
+                <strong>Dataset:</strong> NFL Passing Data (2001–2023)<br>
+                <strong>Key Fields:</strong> Year, Player, Team (Tm), Attempts (Att), Yards (Yds), TD, INT, Rate, ANY/A
+            </p>
+        </section>
+
+        <section>
+            <h2>Reflection & Analysis</h2>
+
+            <h3>1. Data Preparation</h3>
+            <p>
+                For this project I used an NFL passing dataset covering seasons from 2001 through 2023. Before building any visuals in Tableau Public,
+                I had to make sure the file would upload cleanly and that Tableau interpreted the data types correctly. One issue was that the dataset
+                included an extra index column (often labeled something like <em>“Unnamed: 0”</em>). Tableau treats this as a usable field, but it does not
+                represent football data, so I removed it (or hid it) to avoid accidentally using it in charts. I also reviewed column names and noticed
+                several fields used symbols (for example <em>Cmp%</em>, <em>TD%</em>, and <em>Int%</em>) and a dash-based label (<em>Yds-s</em>). Tableau can
+                still read these, but renaming them to cleaner labels made the workflow smoother and reduced confusion when creating calculations or
+                editing tooltips.
+            </p>
+            <p>
+                The biggest preparation step was handling outliers caused by the structure of the dataset. Because the file includes every player who
+                attempted a pass, not just quarterbacks, there are “trick play” rows where a non-QB has one attempt and a touchdown, creating extreme
+                efficiency values like unusually high ANY/A or TD%. These can distort patterns if the goal is to analyze typical passing trends. To solve
+                this, I created a filter for “primary passers” by setting a minimum Attempts threshold (for example, Att ≥ 200). This ensured the visuals
+                focused on real QB seasons rather than one-off gadget plays. I also sanity-checked years and noticed that some records can appear with
+                suspicious season values; this reinforced why it’s important to validate data during exploratory analysis instead of trusting every row as
+                correct.
+            </p>
+
+            <h3>2. Design Choices</h3>
+            <p>
+                My dashboard is designed to reveal both long-term patterns and breaks in patterns. I used <strong>Year</strong> as the main time dimension
+                and <strong>Player</strong> and <strong>Tm (team)</strong> as key categorical dimensions. For measures, I chose a mix of volume and efficiency
+                metrics: passing yards (Yds) and attempts (Att) represent workload and offensive emphasis, while passer rating (Rate) and adjusted net yards
+                per attempt (ANY/A) capture efficiency and overall performance. These are useful because volume alone can be misleading; a passer can throw a
+                lot without being efficient, and vice versa.
+            </p>
+            <p>
+                I created three complementary visuals. First, a line chart summarizes how passing has changed over time across the league. Second, a
+                scatterplot-style view compares volume and outcomes (for example Att vs Yds or TD), which makes it easy to identify exceptional seasons
+                relative to the norm. Third, a heatmap with Team on one axis and Year on the other highlights where certain teams have unusually strong or
+                weak passing efficiency in particular eras. Together, these views support exploration: a viewer can see the big picture, then drill down to
+                individual teams and seasons using filters.
+            </p>
+
+            <h3>3. Expected Patterns</h3>
+            <p>
+                Based on general NFL knowledge, I expected passing to increase over time as the league moved toward a more pass-heavy style of play. Changes
+                in offensive strategy, rule emphasis that protects quarterbacks and receivers, and the growth of spread/shotgun concepts all suggest that both
+                passing volume and efficiency should rise from the early 2000s into the 2010s and 2020s. The line chart largely confirmed this expectation.
+                When focusing on primary passers (Att ≥ 200), later seasons show a higher baseline for production and/or efficiency than the early years.
+                This indicates that “typical” QB seasons have become more productive over time.
+            </p>
+            <p>
+                I also expected a positive relationship between passing attempts and passing yards or touchdowns. In the scatterplot view, most seasons follow
+                that relationship: higher attempts generally correspond to higher yards and more scoring, which supports the idea that teams that throw more
+                tend to generate more passing output. This matched my expectations and helped validate that the dataset captures realistic league behavior.
+            </p>
+
+            <h3>4. Surprises/Outliers</h3>
+            <p>
+                The most interesting insights came from outliers and breaks in the pattern. Some seasons stand far above the main cluster in the scatterplot,
+                representing historically elite QB years. These seasons are surprising because they are not just slightly better than the norm—they are
+                statistically separated from typical performance. In addition to genuine football outliers, there were also “data outliers” that appeared
+                suspicious. For example, a player-season record showing a modern quarterback in an impossible year is a sign of a scraping or labeling error.
+                This kind of anomaly is easy to miss without visualization, but it becomes obvious when a point appears in the wrong time period or doesn’t
+                fit any realistic trend. The heatmap also revealed abrupt changes for certain teams, where efficiency spikes or drops sharply from one year to
+                the next, suggesting transitions like coaching changes, quarterback injuries, roster turnover, or scheme shifts.
+            </p>
+
+            <h3>5. Questions for Further Investigation</h3>
+            <p>
+                These outliers raise questions that could guide deeper analysis. For historically elite seasons, what explains the separation from the rest of
+                the league—scheme, supporting cast, strength of schedule, or rule environment? Do these seasons remain outliers if we control for pace or game
+                script? For team-level spikes and drops in the heatmap, what changed from one year to the next? Was there a new coach or coordinator, a
+                quarterback change, or a major injury? Finally, for suspicious data records, what step in the data pipeline introduced the error, and how
+                should those rows be cleaned or excluded? Answering these questions would require additional data sources (injury reports, coaching history,
+                schedule difficulty, or play-by-play data), but the Tableau visuals help pinpoint exactly where to investigate.
+            </p>
+
+            <h3>6. Tool Evaluation</h3>
+            <p>
+                Tableau Public is a strong tool for exploratory visualization because it makes iteration fast. I could quickly swap measures, adjust chart
+                types, apply filters, and build a dashboard without writing code. Its biggest advantage is interactivity: viewers can filter by team, year, or
+                player and immediately see how the story changes. Tableau also makes it easy to combine multiple views into a single, shareable dashboard for
+                a portfolio.
+            </p>
+            <p>
+                That said, Tableau is not as strong as Python or R for heavy data cleaning, advanced statistical modeling, or fully reproducible analysis.
+                Most of the friction I encountered involved ensuring fields imported correctly and applying filters to prevent misleading small-sample
+                outliers. In a coding environment, I could more easily validate records (for example, detecting impossible player-year combinations) and track
+                every transformation step. Even with those limitations, Tableau Public is excellent for quickly identifying patterns and breaks in patterns and
+                communicating them clearly to a non-technical audience.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Colby Reynolds</p>
+    </footer>
+</body>
+</html>
