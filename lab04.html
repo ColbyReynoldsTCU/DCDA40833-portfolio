@@ -8,13 +8,24 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="lab02.html">Lab 2: AI Evaluation</a>
-            <a href="lab03.html">Lab 3: Visualization Critique</a>
-            <a href="lab04.html" class="active">Lab 4: Tableau Viz</a>
-            <!-- Add more lab links as the semester progresses -->
-        </nav>
+   <nav>
+  <!-- I added this button so the menu can open/close on phones. -->
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation menu">
+    <!-- I used three lines to make the hamburger icon. -->
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <!-- I kept the same list of links so the site looks the same on desktop. -->
+  <ul id="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lab02.html">Lab 2: AI Evaluation</a></li>
+    <li><a href="lab03.html">Lab 3: Visualization Critique</a></li>
+    <li><a href="lab04.html">Lab 4: Tableau Viz</a></li>
+    <li><a href="lab05.html">Lab 5: Vibe Coding</a></li>
+  </ul>
+</nav>
         <h1>Tableau Exploratory Data Analysis</h1>
     </header>
 
@@ -134,5 +145,7 @@
     <footer>
         <p>© 2026 Colby Reynolds</p>
     </footer>
+    <!-- I added this so the hamburger button works on mobile. -->
+<script src="js/nav.js"></script>
 </body>
 </html>

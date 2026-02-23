@@ -11,16 +11,24 @@
 <body>
     <!--I changed the colors from the purple to the slate professional-->
     <!-- Navigation: Links to all portfolio pages -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="lab02.html">Lab 2: AI Evaluation</a>
-            <li><a href="lab03.html">Lab 3: Visualization Critique</a></li>
-            <li><a href="lab04.html">Lab 4: Tableau Viz</a></li>
-            <li><a href="lab5.html">Lab 5</a></li>
-            <li><a href="hometown-map.html">Hometown Map</a></li>
-        </ul>
-    </nav>
+  <nav>
+  <!-- I added this button so the menu can open/close on phones. -->
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation menu">
+    <!-- I used three lines to make the hamburger icon. -->
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <!-- I kept the same list of links so the site looks the same on desktop. -->
+  <ul id="nav-menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lab02.html">Lab 2: AI Evaluation</a></li>
+    <li><a href="lab03.html">Lab 3: Visualization Critique</a></li>
+    <li><a href="lab04.html">Lab 4: Tableau Viz</a></li>
+    <li><a href="lab05.html">Lab 5: Vibe Coding</a></li>
+  </ul>
+</nav>
     <!--I need to change the header from purple to match the rest of the page-->
 
     <!-- Header: Your name and course info -->
@@ -118,5 +126,7 @@
         <p>&copy; 2026 Colby Reynolds | DCDA 40833 | TCU</p>
     </footer>
     <!--I added my name to the footer, I like the link to my github being highlighted in the gold color-->
+    <!-- I added this so the hamburger button works on mobile. -->
+<script src="js/nav.js"></script>
 </body>
 </html>

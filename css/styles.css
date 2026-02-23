@@ -418,3 +418,84 @@ footer a:hover {
         page-break-inside: avoid;
     }
 }
+
+/* =========================
+   Lab 5: Hamburger Nav + Animations
+   ========================= */
+
+/* I made this button hidden on desktop so the nav looks the same as before. */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 6px;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    /* I added this so the button feels smoother when I interact with it. */
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle:hover { opacity: 0.9; }
+.nav-toggle:active { transform: scale(0.98); }
+
+/* I used these spans to draw the hamburger lines. */
+.nav-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: white;
+    margin: 5px 0;
+    border-radius: 2px;
+
+    /* I added this so the icon can animate into an X. */
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* I added this so links animate smoothly on hover (transition experiment). */
+nav a {
+    transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+nav a:hover {
+    transform: translateY(-1px);
+}
+
+/* I set the breakpoint to match your existing mobile breakpoint. */
+@media (max-width: 768px) {
+    /* I show the hamburger button on mobile. */
+    .nav-toggle {
+        display: inline-block;
+        margin: 0 auto;
+    }
+
+    /* I hide the menu by default on mobile, and JS will open it. */
+    nav ul {
+        display: none;
+        width: 100%;
+    }
+
+    /* I show the menu when it has the "open" class. */
+    nav ul.open {
+        display: flex;
+
+        /* I added a small fade/slide animation when the menu opens. */
+        animation: menuIn 0.2s ease;
+    }
+
+    @keyframes menuIn {
+        from { opacity: 0; transform: translateY(-6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
+/* I animate the hamburger into an X when the menu is open. */
+nav.open .nav-toggle .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+nav.open .nav-toggle .bar:nth-child(2) {
+    opacity: 0;
+}
+nav.open .nav-toggle .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
