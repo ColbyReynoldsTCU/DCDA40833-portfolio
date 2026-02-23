@@ -1,0 +1,21 @@
+order_id,order_date,customer_name,state,product,category,quantity,unit_price,total_price,email,notes
+1001,2025-01-05,Alex Smith,TX,Phone Case,Accessories,2.0,12.99,25.98,alex@example.com,nan
+1002,2025-01-06,Jamie Lee,TX,USB-C Cable,Accessory,1.0,9.99,9.99,jamie@example.com,late delivery
+1003,2025-01-07,Sam Patel,CA,Laptop Stand,Office,1.0,29.99,29.99,sam@example.com,
+1004,2025-01-07,Sam Patel,CA,Laptop Stand,Office,1.0,29.99,29.99,sam@example.com,duplicate row
+1005,2025-01-08,Taylor  Green,CO,Wireless Mouse,Office,1.0,19.5,19.5,taylor@example.com,nan
+1006,2025-01-09,Morgan Ray,CO,Notebook,Office,1.0,3.25,3.25,morgan@example.com,missing quantity and total
+1007,2025-01-10,Chris Johnson,Unknown,Water Bottle,Accessories,1.0,15.0,15.0,chris@example.com,missing state
+1008,2025-01-11,Avery Chen,NY,Headphones,Electronics,1.0,89.99,89.99,avery@example.com,nan
+1009,2025-01-12,Jordan Kim,NY,Headphones,Electronics,1.0,89.99,89.99,jordan@example.com,category case mismatch
+1010,2025-01-13,Riley Fox,CA,Desk Lamp,Home,2.0,22.0,44.0,riley@example.com,nan
+1011,2025-01-13,Riley Fox,CA,Desk Lamp,Home,2.0,22.0,44.0,riley@example.com,duplicate row
+1012,2025-01-14,Casey  Hill,TX,Keyboard,Electronics,1.0,45.0,45.0,casey@example.com,nan
+1013,2025-01-15,Drew Stone,TX,Keyboard,Electronics,1.0,45.0,45.0,drew@example.com,quantity is a word
+1014,2025-01-16,Quinn Park,CA,Monitor,Electronics,1.0,199.99,199.99,quinn@example.com,nan
+1015,2025-01-16,Quinn Park,CA,Monitor,Electronics,1.0,199.99,199.99,quinn@example.com,extra spaces in name
+1016,2025-01-17,Skyler  Diaz,CO,Desk Chair,Office,1.0,149.0,149.0,skyler@example.com,nan
+1017,2025-01-18,Peyton Watts,CO,Desk Chair,Office,1.0,149.0,149.0,peyton@example.com,nan
+1018,2025-01-19,Reese Lane,TX,Unknown Product,Office,1.0,12.0,12.0,reese@example.com,missing product
+1019,2025-01-20,Logan Reed,CA,USB-C Cable,Accessories,3.0,9.99,29.97,logan@example.com,nan
+1020,2025-01-20,Logan Reed,CA,USB-C Cable,Accessories,3.0,9.99,29.97,logan@example.com,duplicate row
