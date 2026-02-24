@@ -138,7 +138,7 @@ df["unit_price"] = df["unit_price"].replace("$", "").astype(float)</code></pre>
       <ul>
  <ul>
         <li>I fixed the state mapping issue. The original approach used .map(), which turned anything not in the dictionary into NaN.</li>
-        <li>  I updated the logic to map known values but keep the original value if it didn’t match.</li>
+        <li> I updated the logic to map known values but keep the original value if it didn’t match.</li>
         <li>I added extra cleaning to state text (strip spaces, lowercase first) so mapping works more reliably.</li>
         <li>I replaced blanks with "Unknown" so the state column isn’t empty.</li>
       </ul>
