@@ -37,19 +37,66 @@
       </p>
 
       <h3>My prompts</h3>
-      <pre><code>[Paste your prompts here]</code></pre>
+      <pre><code>Prompt 1:
+I have a portfolio website with a sticky nav that is currently a nav,ul,li,a list. 
+I want a responsive navigation bar where on mobile it turns into a hamburger menu that opens/closes when clicked.
+Please keep my current colors and overall look. My nav background is #3d1461 and my links are white.
+
+Prompt 2:
+Can you add simple CSS transitions/animations so the nav links feel smoother (hover transition) and the hamburger icon animates into an “X” when open?
+
+Prompt 3:
+Please add basic first-person comments in the HTML/CSS/JS that show what I understand.
+Keep the comments simple.</code></pre>
 
       <h3>AI output (before my edits)</h3>
-      <pre><code>[Paste AI output here]</code></pre>
+      <pre><code>&lt;nav&gt;
+  &lt;button class="nav-toggle" type="button"&gt;Menu&lt;/button&gt;
+
+  &lt;ul class="nav-links"&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="lab02.html"&gt;Lab 2: AI Evaluation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="lab03.html"&gt;Lab 3: Visualization Critique&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="lab04.html"&gt;Lab 4: Tableau Viz&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="lab05.html"&gt;Lab 5: Vibe Coding&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+<pre><code>/* AI output snippet (before my edits) */
+.nav-links {
+  display: none;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+.nav-links a {
+  transition: background-color 0.3s ease;
+}</code></pre>
+
+<pre><code>// AI output snippet (before my edits)
+const button = document.querySelector(".nav-toggle");
+const menu = document.querySelector(".nav-links");
+
+button.addEventListener("click", () =&gt; {
+  menu.classList.toggle("open");
+});</code></pre>
 
       <h3>What I changed</h3>
       <ul>
-        <li>[Example: I matched the menu to my existing CSS and kept the sticky nav.]</li>
-        <li>[Example: I added the hover transition and the hamburger-to-X animation.]</li>
+<li>I changed the HTML to match my existing site structure (I kept nav and ul instead of switching to a totally new layout).</li>
+<li>I kept my current styling (same sticky nav, same colors, same spacing), and only added extra CSS for the hamburger button and animations.</li>
+<li>I set the mobile breakpoint to 768px because my portfolio already uses 768px for mobile.</li>
+<li>I added a small animation so the menu fades/slides in when it opens on mobile.</li>
+<li>I updated the JavaScript to also close the menu when I click a link and when the screen resizes back to desktop size.</li> 
+<li>I added simple first-person comments so I can explain the code.</li>
       </ul>
 
       <h3>Screenshot / demo</h3>
-      <p>Add 1–2 screenshots showing the nav on desktop and the hamburger menu open on mobile.</p>
+       <figure class="viz-container">
+                <img src="images/Hamburger_Bar.png" alt="Screenshot of Burger Bar on Mobile" width="550" height="auto">
+            </figure>
     </section>
 
     <section>
@@ -61,27 +108,56 @@
 
       <h3>Notebook link</h3>
       <p>
-        <a href="lab05_cleaning_notebook.ipynb">Download/View my Colab notebook (.ipynb)</a>
+       <a href="https://github.com/ColbyReynoldsTCU/DCDA40833-portfolio/blob/main/Lab05_cleaning_notebook.ipynb" target="_blank" rel="noopener">
+  View my notebook on GitHub
+</a>
       </p>
 
       <h3>My prompts</h3>
-      <pre><code>[Paste your prompts here]</code></pre>
+      <pre><code>Prompt 1:
+I need Python code for Google Colab to clean and transform a messy CSV dataset.
+The dataset has duplicates, missing values, inconsistent state names (ex: "Texas" vs "TX"), inconsistent category casing,
+and money columns stored as strings with "$".
+Please: load the CSV, clean it, standardize state/category values, handle missing values, and export a cleaned CSV.
+
+Prompt 2:
+Can you add simple first-person comments explaining what each step is doing?
+I want the comments to be honest and basic.
+
+Prompt 3:
+My "state" column becomes NaN after mapping with a dictionary.
+Can you fix the code so it keeps original values if they are not in the map and only changes the ones it recognizes?</code></pre>
 
       <h3>AI output (before my edits)</h3>
-      <pre><code>[Paste AI output here]</code></pre>
+      <pre><code># AI output snippet (before my edits)
+df["state"] = df["state"].str.lower().map(state_map)</code></pre>
+        <pre><code># AI output snippet (before my edits)
+df["unit_price"] = df["unit_price"].replace("$", "").astype(float)</code></pre>
+
+ <h3>What I changed</h3>
+      <ul>
+ <ul>
+        <li>I fixed the state mapping issue. The original approach used .map(), which turned anything not in the dictionary into NaN.</li>
+        <li>  I updated the logic to map known values but keep the original value if it didn’t match.</li>
+        <li>I added extra cleaning to state text (strip spaces, lowercase first) so mapping works more reliably.</li>
+        <li>I replaced blanks with "Unknown" so the state column isn’t empty.</li>
+      </ul>
 
       <h3>Screenshot / results</h3>
-      <p>Add a screenshot of your cleaned dataframe output and/or chart from Colab.</p>
+      <p> 
+        <figure class="viz-container">
+                <img src="images/Table_graph.png" alt="Screenshot of Vizualization of Cleaned Data" width="550" height="auto">
+            </figure></p>
+
+            <p> 
+        <figure class="viz-container">
+                <img src="images/cleaned_table.png" alt="Screenshot Cleaned Data Table" width="550" height="auto">
+            </figure></p>
     </section>
 
     <section>
       <h2>My Vibe Coding Guidelines</h2>
-      <ul>
-        <li>I only use AI code if I can explain what it does.</li>
-        <li>I test changes right away and commit often.</li>
-        <li>I add simple comments that show what I understand.</li>
-        <li>I keep AI output as a starting point, then I simplify it.</li>
-      </ul>
+     
     </section>
   </main>
 
