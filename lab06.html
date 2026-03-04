@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 6: Interactive Web Map | Colby Reynolds</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <!-- I added this button so the menu can open/close on phones. -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <ul id="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lab02.html">Lab 2: AI Evaluation</a></li>
+        <li><a href="lab03.html">Lab 3: Visualization Critique</a></li>
+        <li><a href="lab04.html">Lab 4: Tableau Viz</a></li>
+        <li><a href="lab05.html">Lab 5: Vibe Coding</a></li>
+        <li><a href="lab06.html">Lab 6: Interactive Web Map</a></li>
+      </ul>
+    </nav>
+
+    <h1>Lab 6: Interactive Web Map</h1>
+    <p>Custom Mapbox basemap + hometown locations + Python/Folium map</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Interactive Map</h2>
+      <p>
+        This map uses a custom basemap I designed in Mapbox Studio and a dataset of meaningful locations across Colorado.
+        The locations were geocoded with the Mapbox Geocoding API and mapped using Python + Folium.
+      </p>
+
+      <figure class="viz-container">
+        <iframe
+          src="lab6/lab6_hometown_map.html"
+          width="100%"
+          height="650"
+          style="border: none; border-radius: 8px;"
+          loading="lazy"
+          title="Lab 6 Interactive Map">
+        </iframe>
+        <figcaption>
+          Interactive map created with a custom Mapbox basemap and a geocoded CSV dataset.
+        </figcaption>
+      </figure>
+
+      <p>
+        If the embedded map does not load, open it here:
+        <a href="lab6/lab6_hometown_map.html" target="_blank" rel="noopener">Open the interactive map</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>Reflection</h2>
+      <p>
+        <a href="lab6/lab6_reflection.pdf" target="_blank" rel="noopener">View / download my Lab 6 reflection (PDF)</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>Project Files</h2>
+      <ul>
+        <li><a href="lab6/hometown_locations.csv" target="_blank" rel="noopener">hometown_locations.csv</a></li>
+        <li><a href="lab6/hometown_map.py" target="_blank" rel="noopener">hometown_map.py</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Colby Reynolds</p>
+  </footer>
+
+  <!-- I added this so the hamburger button works on mobile. -->
+  <script src="js/nav.js"></script>
+</body>
+</html>

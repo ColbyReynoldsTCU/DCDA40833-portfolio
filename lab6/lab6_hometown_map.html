@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d7c16ab09f959fa84572772c3160d8d2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_d7c16ab09f959fa84572772c3160d8d2" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d7c16ab09f959fa84572772c3160d8d2 = L.map(
+                "map_d7c16ab09f959fa84572772c3160d8d2",
+                {
+                    center: [39.0, -105.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+
+            
+
+        
+    
+            var tile_layer_274ebb6cb50956dee4e8efe7bbe8b082 = L.tileLayer(
+                "https://api.mapbox.com/styles/v1/colbyreynolds/cmmb2inik002x01s6fq3ph5aq/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiY29sYnlyZXlub2xkcyIsImEiOiJjbWx0d25oamkwNG9rM2dxM2RlaWEyaTBxIn0.Nd3YnjS_PE585HLQ4j9qeQ",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Mapbox",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_274ebb6cb50956dee4e8efe7bbe8b082.addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var marker_051cceef3c298016c4dfad0cb24b1d70 = L.marker(
+                [39.911143, -105.008033],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_a8b5b1c09e69cac40c2237bd4d7925d0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_df8e7eba6c11376a2be8653d8a7f0093 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_fe16288b35264cc216448ac540eb31e5 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5UaGUgUmFuY2ggQ291bnRyeSBDbHViPC9oND4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7IGZvbnQtc2l6ZTogMTJweDsiPjxiPlR5cGU6PC9iPiBSZWNyZWF0aW9uPC9wPgogICAgICAgIDxpbWcgc3JjPSJodHRwczovL3d3dy50aGVyYW5jaGNjLmNvbS9kb2N1bWVudHMvMjAxMjQvMTQxMzUyL1dlZGRpbmclMkJJbWFnZS5qcGcvOWQ0NjIzOTktNDYzNi0zN2MzLTgyMmMtZTQzYTJkMzBkMGQ0P3Q9MTc2OTc5ODc1ODIyNiIgc3R5bGU9IndpZHRoOiAxMDAlOyBib3JkZXItcmFkaXVzOiAxMHB4OyBtYXJnaW46IDZweCAwIDhweCAwOyIgLz4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOiAwOyBmb250LXNpemU6IDEycHg7IGxpbmUtaGVpZ2h0OiAxLjM7Ij5UaGlzIGlzIHdoZXJlIEkgcGxheSBnb2xmIHdpdGggbXkgYnJvdGhlciBhbmQgZGFkLCBzbyBpdOKAmXMgdGllZCB0byBzb21lIG9mIG15IGZhdm9yaXRlIGZhbWlseSBtZW1vcmllcy4gSXTigJlzIG9uZSBvZiB0aG9zZSBwbGFjZXMgdGhhdCBpbnN0YW50bHkgZmVlbHMgZmFtaWxpYXIgYW5kIGZ1biBldmVyeSB0aW1lIEnigJltIHRoZXJlLjwvcD4KICAgIDwvZGl2PgogICAg" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_df8e7eba6c11376a2be8653d8a7f0093.setContent(i_frame_fe16288b35264cc216448ac540eb31e5);
+            
+        
+
+        marker_051cceef3c298016c4dfad0cb24b1d70.bindPopup(popup_df8e7eba6c11376a2be8653d8a7f0093)
+        ;
+
+        
+    
+    
+            marker_051cceef3c298016c4dfad0cb24b1d70.bindTooltip(
+                `<div>
+                     The Ranch Country Club
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_051cceef3c298016c4dfad0cb24b1d70.setIcon(icon_a8b5b1c09e69cac40c2237bd4d7925d0);
+            
+    
+            var marker_3d5ee344653ab7335fff0d12de00cb1c = L.marker(
+                [39.522768, -104.871806],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_25c800aab50a6155c5ae0289ddef70f0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e51cadb9e5d5a69802038b7749c94c01 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_ee09f6a114f6db568cc9cc6710472233 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5TaWVycmE8L2g0PgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46IDAgMCA2cHggMDsgZm9udC1zaXplOiAxMnB4OyI+PGI+VHlwZTo8L2I+IFJlc3RhdXJhbnQ8L3A+CiAgICAgICAgPGltZyBzcmM9Imh0dHBzOi8vd3d3LnNpZXJyYXJlc3RhdXJhbnQuY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDI1LzEyL1NpZXJyYS1SZXN0YXVyYW50LnBuZyIgc3R5bGU9IndpZHRoOiAxMDAlOyBib3JkZXItcmFkaXVzOiAxMHB4OyBtYXJnaW46IDZweCAwIDhweCAwOyIgLz4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOiAwOyBmb250LXNpemU6IDEycHg7IGxpbmUtaGVpZ2h0OiAxLjM7Ij5UaGlzIGlzIG9uZSBvZiBteSBmYXZvcml0ZSBzcG90cyB3aGVuIEnigJltIGRvd24gaW4gdGhlIExvbmUgVHJlZSBhcmVhLiBJIGxpa2UgdGhlIGF0bW9zcGhlcmUgYW5kIGl04oCZcyBhIGdvLXRvIHBsYWNlIEnigJlkIHRha2Ugc29tZW9uZSB3aG8gd2FudHMgYSBuaWNlciBtZWFsIHdpdGhvdXQgaXQgZmVlbGluZyB0b28gZm9ybWFsLjwvcD4KICAgIDwvZGl2PgogICAg" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_e51cadb9e5d5a69802038b7749c94c01.setContent(i_frame_ee09f6a114f6db568cc9cc6710472233);
+            
+        
+
+        marker_3d5ee344653ab7335fff0d12de00cb1c.bindPopup(popup_e51cadb9e5d5a69802038b7749c94c01)
+        ;
+
+        
+    
+    
+            marker_3d5ee344653ab7335fff0d12de00cb1c.bindTooltip(
+                `<div>
+                     Sierra
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d5ee344653ab7335fff0d12de00cb1c.setIcon(icon_25c800aab50a6155c5ae0289ddef70f0);
+            
+    
+            var marker_0690c519f327349a9d9e2226935ec01a = L.marker(
+                [39.560963, -104.987579],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_26cececde9db6b6c31864c8ff78e2966 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9d98898c2b2954434733bd4f7e742ad6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_f6293586dabad4f817f57ccdd96ee382 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5Mb3MgRG9zIFBvdHJpbGxvcyAoSGlnaGxhbmRzIFJhbmNoKTwvaDQ+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjogMCAwIDZweCAwOyBmb250LXNpemU6IDEycHg7Ij48Yj5UeXBlOjwvYj4gUmVzdGF1cmFudDwvcD4KICAgICAgICA8aW1nIHNyYz0iaHR0cHM6Ly9wb3BtZW51Y2xvdWQuY29tL2Nkbi1jZ2kvaW1hZ2Uvd2lkdGglM0QxMjAwJTJDaGVpZ2h0JTNEMTIwMCUyQ2ZpdCUzRHNjYWxlLWRvd24lMkNmb3JtYXQlM0RhdXRvJTJDcXVhbGl0eSUzRDYwL2lxZGZ2aGVsLzQzYzdhYzg0LTkxMmMtNDVkOS04NjNhLTE2ZTZlNjZjZDkxOC5qcGciIHN0eWxlPSJ3aWR0aDogMTAwJTsgYm9yZGVyLXJhZGl1czogMTBweDsgbWFyZ2luOiA2cHggMCA4cHggMDsiIC8+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjogMDsgZm9udC1zaXplOiAxMnB4OyBsaW5lLWhlaWdodDogMS4zOyI+VGhpcyBpcyBteSBmYXZvcml0ZSBNZXhpY2FuIHJlc3RhdXJhbnQgYXJvdW5kIEhpZ2hsYW5kcyBSYW5jaC4gSXTigJlzIHRoZSBraW5kIG9mIHBsYWNlIEkga2VlcCBjb21pbmcgYmFjayB0byBiZWNhdXNlIHRoZSBmb29kIGlzIGNvbnNpc3RlbnRseSBncmVhdCBhbmQgaXQgZmVlbHMgbGlrZSBhIHJlbGlhYmxlIGxvY2FsIHN0YXBsZS48L3A+CiAgICA8L2Rpdj4KICAgIA==" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_9d98898c2b2954434733bd4f7e742ad6.setContent(i_frame_f6293586dabad4f817f57ccdd96ee382);
+            
+        
+
+        marker_0690c519f327349a9d9e2226935ec01a.bindPopup(popup_9d98898c2b2954434733bd4f7e742ad6)
+        ;
+
+        
+    
+    
+            marker_0690c519f327349a9d9e2226935ec01a.bindTooltip(
+                `<div>
+                     Los Dos Potrillos (Highlands Ranch)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0690c519f327349a9d9e2226935ec01a.setIcon(icon_26cececde9db6b6c31864c8ff78e2966);
+            
+    
+            var marker_3928005ad4cab4eb9e852dbc14d6b6a7 = L.marker(
+                [39.56424, -105.04637],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_0f4aac28007bad48b324976165fc6cac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e7803287a3a5179739e05fefdbfd094a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_ecbca19dc7638ee876f45469113f3aec = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5DaGF0ZmllbGQgU3RhdGUgUGFyazwvaDQ+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjogMCAwIDZweCAwOyBmb250LXNpemU6IDEycHg7Ij48Yj5UeXBlOjwvYj4gUmVjcmVhdGlvbjwvcD4KICAgICAgICA8aW1nIHNyYz0iaHR0cHM6Ly9jb21tb25zLndpa2ltZWRpYS5vcmcvd2lraS9TcGVjaWFsOkZpbGVQYXRoL0NoYXRmaWVsZCUyMFN0YXRlJTIwUGFyay5KUEciIHN0eWxlPSJ3aWR0aDogMTAwJTsgYm9yZGVyLXJhZGl1czogMTBweDsgbWFyZ2luOiA2cHggMCA4cHggMDsiIC8+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjogMDsgZm9udC1zaXplOiAxMnB4OyBsaW5lLWhlaWdodDogMS4zOyI+VGhpcyBpcyB3aGVyZSBJIGdvIHdha2Ugc3VyZmluZyBhbmQgcGFkZGxlIGJvYXJkaW5nLCBzbyBpdOKAmXMgb25lIG9mIG15IG1haW4gc3VtbWVyIHNwb3RzLiBJdOKAmXMgYSBwbGFjZSBJIGFzc29jaWF0ZSB3aXRoIGJlaW5nIG91dHNpZGUsIGJlaW5nIG9uIHRoZSB3YXRlciwgYW5kIHNwZW5kaW5nIGZ1bGwgZGF5cyBkb2luZyBzb21ldGhpbmcgYWN0aXZlLjwvcD4KICAgIDwvZGl2PgogICAg" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_e7803287a3a5179739e05fefdbfd094a.setContent(i_frame_ecbca19dc7638ee876f45469113f3aec);
+            
+        
+
+        marker_3928005ad4cab4eb9e852dbc14d6b6a7.bindPopup(popup_e7803287a3a5179739e05fefdbfd094a)
+        ;
+
+        
+    
+    
+            marker_3928005ad4cab4eb9e852dbc14d6b6a7.bindTooltip(
+                `<div>
+                     Chatfield State Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3928005ad4cab4eb9e852dbc14d6b6a7.setIcon(icon_0f4aac28007bad48b324976165fc6cac);
+            
+    
+            var marker_559b1ae59d9643b723a8a48206fbbf32 = L.marker(
+                [39.643833, -106.379676],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_562cbe33289c5db49381db4cc10dc207 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ddeb81043b8935028c4b1818f1783541 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_14da2a39d72f4753cd055113127be8a1 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5WYWlsIFZpbGxhZ2U8L2g0PgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46IDAgMCA2cHggMDsgZm9udC1zaXplOiAxMnB4OyI+PGI+VHlwZTo8L2I+IFJlY3JlYXRpb248L3A+CiAgICAgICAgPGltZyBzcmM9Imh0dHBzOi8vY29tbW9ucy53aWtpbWVkaWEub3JnL3dpa2kvU3BlY2lhbDpGaWxlUGF0aC9WYWlsJTIwdmlsbGFnZSUyMGNvbG9yYWRvLmpwZyIgc3R5bGU9IndpZHRoOiAxMDAlOyBib3JkZXItcmFkaXVzOiAxMHB4OyBtYXJnaW46IDZweCAwIDhweCAwOyIgLz4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOiAwOyBmb250LXNpemU6IDEycHg7IGxpbmUtaGVpZ2h0OiAxLjM7Ij5WYWlsIGlzIG15IGZhdm9yaXRlIHBsYWNlIHRvIHNraSwgYW5kIGl04oCZcyB0aGUgc3BvdCBJIHRoaW5rIG9mIHdoZW4gSSBwaWN0dXJlIGEgcGVyZmVjdCB3aW50ZXIgdHJpcC4gVGhlIHZpbGxhZ2UgYW5kIHRoZSBtb3VudGFpbiBib3RoIGZlZWwgbGlrZSB0aGUgY2xhc3NpYyBDb2xvcmFkbyBza2kgZXhwZXJpZW5jZS48L3A+CiAgICA8L2Rpdj4KICAgIA==" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_ddeb81043b8935028c4b1818f1783541.setContent(i_frame_14da2a39d72f4753cd055113127be8a1);
+            
+        
+
+        marker_559b1ae59d9643b723a8a48206fbbf32.bindPopup(popup_ddeb81043b8935028c4b1818f1783541)
+        ;
+
+        
+    
+    
+            marker_559b1ae59d9643b723a8a48206fbbf32.bindTooltip(
+                `<div>
+                     Vail Village
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_559b1ae59d9643b723a8a48206fbbf32.setIcon(icon_562cbe33289c5db49381db4cc10dc207);
+            
+    
+            var marker_c7f1805d01e8d05556ffff87ce99a590 = L.marker(
+                [40.018355, -105.278655],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_f539626a980f3ba50edf4b6020f53c35 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3055b6504413808085d343fff0f37529 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_8a311612570c9b9f4a782d0f0073d640 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5QZWFybCBTdHJlZXQgTWFsbDwvaDQ+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjogMCAwIDZweCAwOyBmb250LXNpemU6IDEycHg7Ij48Yj5UeXBlOjwvYj4gQ3VsdHVyYWw8L3A+CiAgICAgICAgPGltZyBzcmM9Imh0dHBzOi8vY29tbW9ucy53aWtpbWVkaWEub3JnL3dpa2kvU3BlY2lhbDpGaWxlUGF0aC9QZWFybCUyMFN0cmVldCUyME1hbGwuanBnIiBzdHlsZT0id2lkdGg6IDEwMCU7IGJvcmRlci1yYWRpdXM6IDEwcHg7IG1hcmdpbjogNnB4IDAgOHB4IDA7IiAvPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46IDA7IGZvbnQtc2l6ZTogMTJweDsgbGluZS1oZWlnaHQ6IDEuMzsiPlBlYXJsIFN0cmVldCBpcyBvbmUgb2YgdGhlIGJlc3QgcGxhY2VzIHRvIHdhbGsgYXJvdW5kIGluIEJvdWxkZXIgYmVjYXVzZSB0aGVyZSBhcmUgc28gbWFueSBzaG9wcyBhbmQgZ29vZCBwbGFjZXMgdG8gZWF0LiBJdOKAmXMgYSBnby10byBwbGFjZSB0byBicmluZyBwZW9wbGUgYmVjYXVzZSBpdCBhbHdheXMgaGFzIGVuZXJneSBhbmQgdGhpbmdzIHRvIGRvLjwvcD4KICAgIDwvZGl2PgogICAg" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_3055b6504413808085d343fff0f37529.setContent(i_frame_8a311612570c9b9f4a782d0f0073d640);
+            
+        
+
+        marker_c7f1805d01e8d05556ffff87ce99a590.bindPopup(popup_3055b6504413808085d343fff0f37529)
+        ;
+
+        
+    
+    
+            marker_c7f1805d01e8d05556ffff87ce99a590.bindTooltip(
+                `<div>
+                     Pearl Street Mall
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c7f1805d01e8d05556ffff87ce99a590.setIcon(icon_f539626a980f3ba50edf4b6020f53c35);
+            
+    
+            var marker_7e52e0cd54dab5d1d9ce0920be1fc6fd = L.marker(
+                [39.571705, -107.535043],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_625548f12668229a3a16662e59364690 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_61779e74214dc4d4e9a9a9f506a7053e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_8a3b174cd14d46faebd8f5ab14899e55 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5OZXcgQ2FzdGxlIChUb3duIEhhbGwpPC9oND4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7IGZvbnQtc2l6ZTogMTJweDsiPjxiPlR5cGU6PC9iPiBIaXN0b3JpY2FsPC9wPgogICAgICAgIDxpbWcgc3JjPSJodHRwczovL2NvbW1vbnMud2lraW1lZGlhLm9yZy93aWtpL1NwZWNpYWw6RmlsZVBhdGgvTmV3JTIwQ2FzdGxlJTJDJTIwQ29sb3JhZG8uSlBHIiBzdHlsZT0id2lkdGg6IDEwMCU7IGJvcmRlci1yYWRpdXM6IDEwcHg7IG1hcmdpbjogNnB4IDAgOHB4IDA7IiAvPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46IDA7IGZvbnQtc2l6ZTogMTJweDsgbGluZS1oZWlnaHQ6IDEuMzsiPk5ldyBDYXN0bGUgbWF0dGVycyB0byBtZSBiZWNhdXNlIGl04oCZcyB3aGVyZSBteSBmYW1pbHkgcmFuY2ggaXMgYW5kIHdoZXJlIEkgc3BlbmQgdGltZSBodW50aW5nIGFuZCBiZWluZyBvdXRkb29ycy4gSSB1c2VkIFRvd24gSGFsbCBhcyBhIHB1YmxpYyByZWZlcmVuY2UgcG9pbnQsIGJ1dCB0aGUgcGxhY2UgcmVwcmVzZW50cyBzb21lIG9mIG15IG1vc3QgcGVyc29uYWwgQ29sb3JhZG8gbWVtb3JpZXMuPC9wPgogICAgPC9kaXY+CiAgICA=" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_61779e74214dc4d4e9a9a9f506a7053e.setContent(i_frame_8a3b174cd14d46faebd8f5ab14899e55);
+            
+        
+
+        marker_7e52e0cd54dab5d1d9ce0920be1fc6fd.bindPopup(popup_61779e74214dc4d4e9a9a9f506a7053e)
+        ;
+
+        
+    
+    
+            marker_7e52e0cd54dab5d1d9ce0920be1fc6fd.bindTooltip(
+                `<div>
+                     New Castle (Town Hall)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7e52e0cd54dab5d1d9ce0920be1fc6fd.setIcon(icon_625548f12668229a3a16662e59364690);
+            
+    
+            var marker_c1cec7f2b375654244011a5a63cf1785 = L.marker(
+                [39.665397, -105.20611],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_f4c28d3dce7988508399dd89f10a156e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_790cf991a0e4ee96b9a3a8a0ac9790fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_a31f808504b943330daad3d1ae77b13b = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5SZWQgUm9ja3MgUGFyayAmIEFtcGhpdGhlYXRyZTwvaDQ+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjogMCAwIDZweCAwOyBmb250LXNpemU6IDEycHg7Ij48Yj5UeXBlOjwvYj4gQ3VsdHVyYWw8L3A+CiAgICAgICAgPGltZyBzcmM9Imh0dHBzOi8vY29tbW9ucy53aWtpbWVkaWEub3JnL3dpa2kvU3BlY2lhbDpGaWxlUGF0aC9SZWQlMjBSb2NrcyUyMEFtcGhpdGhlYXRyZS5qcGciIHN0eWxlPSJ3aWR0aDogMTAwJTsgYm9yZGVyLXJhZGl1czogMTBweDsgbWFyZ2luOiA2cHggMCA4cHggMDsiIC8+CiAgICAgICAgPHAgc3R5bGU9Im1hcmdpbjogMDsgZm9udC1zaXplOiAxMnB4OyBsaW5lLWhlaWdodDogMS4zOyI+UmVkIFJvY2tzIGlzIG9uZSBvZiB0aGUgYmVzdCBjb25jZXJ0IHZlbnVlcyBpbiB0aGUgVS5TLiBhbmQgaXQgZmVlbHMgdW5pcXVlbHkgQ29sb3JhZG8uIEV2ZW4gb3V0c2lkZSBvZiBjb25jZXJ0cywgaXTigJlzIGEgcGxhY2UgdGhhdOKAmXMgd29ydGggc2VlaW5nIGJlY2F1c2UgdGhlIHNldHRpbmcgYW5kIHZpZXdzIGFyZSB1bnJlYWwuPC9wPgogICAgPC9kaXY+CiAgICA=" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_790cf991a0e4ee96b9a3a8a0ac9790fa.setContent(i_frame_a31f808504b943330daad3d1ae77b13b);
+            
+        
+
+        marker_c1cec7f2b375654244011a5a63cf1785.bindPopup(popup_790cf991a0e4ee96b9a3a8a0ac9790fa)
+        ;
+
+        
+    
+    
+            marker_c1cec7f2b375654244011a5a63cf1785.bindTooltip(
+                `<div>
+                     Red Rocks Park & Amphitheatre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c1cec7f2b375654244011a5a63cf1785.setIcon(icon_f4c28d3dce7988508399dd89f10a156e);
+            
+    
+            var marker_f524395ef682af64126b458b401c7066 = L.marker(
+                [39.717491, -104.949428],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_d95e6e0e79541afd371083376438817f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3fa7d09920089321aa852f3ed18cdfa0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_f52c9163f42f31f3ecdbed628045f540 = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5NYXRzdWhpc2EgRGVudmVyPC9oND4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7IGZvbnQtc2l6ZTogMTJweDsiPjxiPlR5cGU6PC9iPiBSZXN0YXVyYW50PC9wPgogICAgICAgIDxpbWcgc3JjPSJodHRwczovL3d3dy5tYXRzdWhpc2FyZXN0YXVyYW50cy5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMjMvMDgvTWF0c3VoaXNhLURlbnZlci1Db2NrdGFpbHMuanBnIiBzdHlsZT0id2lkdGg6IDEwMCU7IGJvcmRlci1yYWRpdXM6IDEwcHg7IG1hcmdpbjogNnB4IDAgOHB4IDA7IiAvPgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46IDA7IGZvbnQtc2l6ZTogMTJweDsgbGluZS1oZWlnaHQ6IDEuMzsiPlRoaXMgaXMgc29tZSBvZiBteSBmYXZvcml0ZSBzdXNoaSBpbiBDb2xvcmFkbywgYW5kIGl04oCZcyBhIHNwb3QgSeKAmWQgcGljayB3aGVuIEkgd2FudCBhIG1lYWwgdGhhdCBmZWVscyBsaWtlIGFuIGV4cGVyaWVuY2UuIEl04oCZcyBhIGdvLXRvIHJlY29tbWVuZGF0aW9uIGZvciBzb21lb25lIHZpc2l0aW5nIERlbnZlciB3aG8gd2FudHMgc29tZXRoaW5nIHNwZWNpYWwuPC9wPgogICAgPC9kaXY+CiAgICA=" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_3fa7d09920089321aa852f3ed18cdfa0.setContent(i_frame_f52c9163f42f31f3ecdbed628045f540);
+            
+        
+
+        marker_f524395ef682af64126b458b401c7066.bindPopup(popup_3fa7d09920089321aa852f3ed18cdfa0)
+        ;
+
+        
+    
+    
+            marker_f524395ef682af64126b458b401c7066.bindTooltip(
+                `<div>
+                     Matsuhisa Denver
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f524395ef682af64126b458b401c7066.setIcon(icon_d95e6e0e79541afd371083376438817f);
+            
+    
+            var marker_678cb1bae501cae517aa37ce725ee7e6 = L.marker(
+                [39.75697, -105.22328],
+                {
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+        
+    
+            var icon_b76ccce6ea3ec61717b5d9458dfb7761 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3e271ab6649a66145bbf9790ffa73984 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var i_frame_6ed7528a3f3b4198ed2af85cbaf9fc3f = $(`<iframe src="data:text/html;charset=utf-8;base64,CiAgICAKICAgIDxkaXYgc3R5bGU9IndpZHRoOiAyNjBweDsiPgogICAgICAgIDxoNCBzdHlsZT0ibWFyZ2luOiAwIDAgNnB4IDA7Ij5Hb2xkZW4gV2VsY29tZSBDZW50ZXIgKERvd250b3duIEdvbGRlbik8L2g0PgogICAgICAgIDxwIHN0eWxlPSJtYXJnaW46IDAgMCA2cHggMDsgZm9udC1zaXplOiAxMnB4OyI+PGI+VHlwZTo8L2I+IEN1bHR1cmFsPC9wPgogICAgICAgIDxpbWcgc3JjPSJodHRwczovL2NvbW1vbnMud2lraW1lZGlhLm9yZy93aWtpL1NwZWNpYWw6RmlsZVBhdGgvRG93bnRvd24lMjBHb2xkZW4lMkMlMjBDb2xvLmpwZyIgc3R5bGU9IndpZHRoOiAxMDAlOyBib3JkZXItcmFkaXVzOiAxMHB4OyBtYXJnaW46IDZweCAwIDhweCAwOyIgLz4KICAgICAgICA8cCBzdHlsZT0ibWFyZ2luOiAwOyBmb250LXNpemU6IDEycHg7IGxpbmUtaGVpZ2h0OiAxLjM7Ij5JIGxpa2UgR29sZGVuIGJlY2F1c2UgaXQgaGFzIGdyZWF0IGZvb2QgYW5kIGJlZXIsIGFuZCBpdOKAmXMgZWFzeSB0byBtaXggZG93bnRvd24gd2l0aCBvdXRkb29yIGFjdGl2aXRpZXMgaW4gdGhlIHNhbWUgZGF5LiBJdOKAmXMgb25lIG9mIHRoZSBiZXN0IHBsYWNlcyB0byBoYW5nIG91dCBhbmQgZXhwbG9yZSB3aXRob3V0IG5lZWRpbmcgYSBzdHJpY3QgcGxhbi48L3A+CiAgICA8L2Rpdj4KICAgIA==" width="280" style="border:none !important;" height="320"></iframe>`)[0];
+                popup_3e271ab6649a66145bbf9790ffa73984.setContent(i_frame_6ed7528a3f3b4198ed2af85cbaf9fc3f);
+            
+        
+
+        marker_678cb1bae501cae517aa37ce725ee7e6.bindPopup(popup_3e271ab6649a66145bbf9790ffa73984)
+        ;
+
+        
+    
+    
+            marker_678cb1bae501cae517aa37ce725ee7e6.bindTooltip(
+                `<div>
+                     Golden Welcome Center (Downtown Golden)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_678cb1bae501cae517aa37ce725ee7e6.setIcon(icon_b76ccce6ea3ec61717b5d9458dfb7761);
+            
+    
+            map_d7c16ab09f959fa84572772c3160d8d2.fitBounds(
+                [[39.911143, -105.008033], [39.522768, -104.871806], [39.560963, -104.987579], [39.56424, -105.04637], [39.643833, -106.379676], [40.018355, -105.278655], [39.571705, -107.535043], [39.665397, -105.20611], [39.717491, -104.949428], [39.75697, -105.22328]],
+                {"padding": [30, 30]}
+            );
+        
+    
+            var layer_control_8d2e66820636732b630f67eff88218c6_layers = {
+                base_layers : {
+                    "Custom Basemap" : tile_layer_274ebb6cb50956dee4e8efe7bbe8b082,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_8d2e66820636732b630f67eff88218c6 = L.control.layers(
+                layer_control_8d2e66820636732b630f67eff88218c6_layers.base_layers,
+                layer_control_8d2e66820636732b630f67eff88218c6_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_d7c16ab09f959fa84572772c3160d8d2);
+
+        
+</script>
+</html>
