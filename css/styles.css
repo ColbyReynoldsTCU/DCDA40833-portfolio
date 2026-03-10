@@ -499,3 +499,15 @@ nav.open .nav-toggle .bar:nth-child(2) {
 nav.open .nav-toggle .bar:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
 }
+
+
+.lab-overview {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.lab-overview h2 {
+    margin-top: 0;
+}
